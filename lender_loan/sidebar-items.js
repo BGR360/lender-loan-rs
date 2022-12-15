@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["Lender","A scoped reference to a value that can be lent to other threads in a lifetime-erased way."],["Loan","A lifetime-erased, reference-counted pointer to a [`Lender`]’s data."]]};
