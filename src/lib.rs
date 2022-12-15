@@ -53,7 +53,7 @@ use std::{fmt, hash, marker::PhantomData, ops::Deref, sync::Arc};
 /// shared reference that is to be lent out.
 #[derive(PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Lender<'a, T: 'a + ?Sized> {
-    // Both the lender and all of its loans hold a strong reference to the
+    // Both the lender and all of its loans hold a strong reference to the `LoanInner`.
     inner: Arc<LoanInner<'a, T>>,
 }
 
@@ -188,6 +188,8 @@ impl<'a, T: ?Sized> Deref for Lender<'a, T> {
 /// This type can only be created by calling [`Lender::lend`].
 #[derive(Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Loan<T: ?Sized> {
+    // Both the lender and all of its loans hold a strong reference to the `LoanInner`.
+    //
     // The lifetime is 'static because the lifetime has been erased!
     // This is okay because `Loan` hands out references with lifetimes no longer
     // than that of itself, and the stack frame in which the loaned value lives
