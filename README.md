@@ -1,5 +1,7 @@
 # `lender-loan`
 
+[Documentation](https://bgr360.github.io/lender-loan-rs/lender_loan/)
+
 Lifetime-erased borrowing across threads.
 
 This crate provides two types: `Lender<'a, T>` and `Loan<T>`. A
