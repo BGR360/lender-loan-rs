@@ -1,0 +1,25 @@
+name: tests
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Run tests
+        run: cargo test --workspace
