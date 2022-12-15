@@ -246,7 +246,8 @@ mod inner {
         /// # Safety
         ///
         /// The provided [`Event`] reference must be valid for at least as long
-        /// as this [`LoanInner`] is valid, because it is dereferenced in
+        /// as this [`LoanInner`] is valid, because it is dereferenced in the
+        /// `Drop` implementation.
         pub(super) unsafe fn new(principal: &'a T, event: &Event) -> Self
         where
             T: 'a,
